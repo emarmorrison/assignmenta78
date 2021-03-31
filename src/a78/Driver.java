@@ -1,64 +1,56 @@
 package a78;
-
+import java.io.File;
+import java.io.IOException;
 import javax.swing.*;
 import java.awt.*;
 
 public class Driver {
     public static void main(String[] args) {
 
-        a78.Auth auth = new a78.Auth();
+       /* File file = new File("emar.txt"); //initialize File object and passing path as argument
+        boolean result;
+        try
+        {
+            result = file.createNewFile();  //creates a new file
+            if(result)      // test if successfully created a new file
+            {
+                System.out.println("file created "+file.getCanonicalPath()); //returns the path string
+            }
+            else
+            {
+                System.out.println("File already exist at location: "+file.getCanonicalPath());
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();    //prints exception if any
+        }
+*/
+        Customer cus = new Customer();
 
-        if(auth.login())
-            userInput();
+        cus = cus.login();
+        if (cus.getUsername().length() > 0) {
+            userInput(cus);
+        }
     }
 
-    public static void userInput()
-    {
+    public static void userInput( Customer cus) {
+        System.out.println("Sooon");
         String input;
-        a78.Calculation cal = new a78.Calculation();
         System.out.println("******Welcome To Online Banking*******\n\n\n");
-        cal.setFirstname(JOptionPane.showInputDialog("Please enter your First Name "));
-        cal.setLastname(JOptionPane.showInputDialog("Please enter your Last Name "));
+        //cal.setFirstname(JOptionPane.showInputDialog("Please enter your First Name "));
+        // cal.setLastname(JOptionPane.showInputDialog("Please enter your Last Name "));
 
-        input=JOptionPane.showInputDialog("1. Make A Deposit \n 2. Make A Withdrawal\n 3. Check Your Balance \n\n 9. Exit ");
+        input=JOptionPane.showInputDialog("******Welcome To Online Banking*******\n\n\n1. Make A Deposit \n2. Make A Withdrawal\n3. Check Your Balance \n\n 9. Exit ");
 
         if(input.equals("1"))
-            cal.setServiceCost(100);
+            cus.deposit();
         else if(input.equals("2"))
-            cal.setServiceCost(150);
+            cus.withdraw();
         else if(input.equals("3"))
-            cal.setServiceCost(0);
+            cus.getLastname();
         else
             JOptionPane.showMessageDialog((Component) null,"Invalid Input");
 
-        input=JOptionPane.showInputDialog("Options\n\n 1. Storage Small - $8\\day\n 2. Storage Large - $20.11\\day \n 3. No Options ");
-        if(input.equals("1"))
-            cal.setOptionCost(8);
-        else if(input.equals("2"))
-            cal.setOptionCost(20.11f);
-        else if(input.equals("3"))
-            cal.setOptionCost(0.0f);
-        else
-            JOptionPane.showMessageDialog((Component) null,"Invalid Input");
-
-        input=JOptionPane.showInputDialog("Items\n\n 1. Boxes Small - $2.50/per box\n2. Boxes Large - $4.50 per box \n 3. No Items ");
-        if(input.equals("1"))
-            cal.setItemsCost(2.50f);
-        else if(input.equals("2"))
-            cal.setItemsCost(4.50f);
-        else if(input.equals("3"))
-            cal.setItemsCost(0.0f);
-        else
-            JOptionPane.showMessageDialog((Component) null,"Invalid Input");
-
-        display(cal);
-
-    }
-    public static void display( a78.Calculation cal)
-    {
-        cal.displayItemCost();
-        cal.displayOptionCost();
-        cal.displayServiceCost();
-        cal.displayTotalCost();
     }
 }
