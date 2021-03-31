@@ -140,7 +140,7 @@ public class Customer
         Customer cus = new Customer();
         Filem auth = new Filem();
 
-        for (int x = 0; x < 1; ++x) {
+        for (int x = 0; x < 3; ++x) {
             username = JOptionPane.showInputDialog("Please enter your username ");
             password = JOptionPane.showInputDialog("Please enter your password ");
             if (auth.readFile(username, password)) {
