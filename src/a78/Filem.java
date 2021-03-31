@@ -64,20 +64,18 @@ public class Filem {
     }
 
     //checks user balance
-    public static String readFile() {
-        float balance = 0.0f;
+    public static String readFile( String username, int fname) {
+        String  balance = "";
         try {
 
-            String filename = username.toString() + ",txt";
-            File myObj = new File("emar.txt");
+            String filename = username.toString() + ".txt";
+            System.out.println("Filename: "+filename);
+            File myObj = new File(filename);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 String[] parts = data.split(",");
-                System.out.println("at parts balance: "+parts[2]);
-                balance = Float.parseFloat(parts[2]);
-                System.out.println(balance);
-                return balance;
+                return (parts[3]);
             }
             myReader.close();
         }

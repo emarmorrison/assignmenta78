@@ -129,7 +129,8 @@ public class Customer
 
     public void display(String username)
     {
-        JOptionPane.showMessageDialog((Component) null,"************ NEW BALANCE **********\n\n\t"+getBalance());
+        Filem f = new Filem();
+        JOptionPane.showMessageDialog((Component) null,"************ YOUR CURRENT BALANCE **********\n\n\t"+f.readFile(getUsername(),1));
     }
     //used for logging on to the system
     public Customer login()

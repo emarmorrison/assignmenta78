@@ -48,7 +48,7 @@ public class Driver {
         else if(input.equals("2"))
             cus.withdraw();
         else if(input.equals("3"))
-            cus.getLastname();
+            cus.display(cus.getUsername());
         else
             JOptionPane.showMessageDialog((Component) null,"Invalid Input");
 
